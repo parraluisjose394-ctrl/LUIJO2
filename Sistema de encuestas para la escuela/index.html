@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta Escolar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="titulo">Encuesta Escolar</h1>
+
+        <form id="formEncuesta" onsubmit="enviarFormulario(event)">
+
+            <label for="nombre">Tu nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="actividad">Selecciona una actividad:</label>
+            <div class="select-container">
+                <select id="actividad" required>
+                    <option value="">-- Selecciona --</option>
+                    <option value="Danza">Danza</option>
+                    <option value="Canto">Canto</option>
+                    <option value="Teatro">Teatro</option>
+                    <option value="Rap / Freestyle">Rap / Freestyle</option>
+                    <option value="Baile Urbano">Baile Urbano</option>
+                    <option value="DJ">DJ</option>
+                    <option value="Cinematografía">Cinematografía</option>
+                    <option value="Robótica">Robótica</option>
+                    <option value="Artes Plásticas">Artes Plásticas</option>
+                    <option value="Deportes">Deportes</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Enviar Voto</button>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxCldgUP_qnGJ6dTS6vINiDa-mFIN4c0jrEYt_7gqJ8KrkBfKQCU802uARD7ybiTgRbuw/exec"; // <-- PON TU URL AQUI
+
+        function enviarFormulario(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+            const actividad = document.getElementById("actividad").value;
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: JSON.stringify({ nombre, actividad })
+            })
+            .then(r => r.json())
+            .then(res => {
+                if (res.status === "success") {
+                    alert("¡Voto enviado!");
+                } else {
+                    alert("Error: " + res.message);
+                }
+            })
+            .catch(() => {
+                alert("Error al conectar con el servidor");
+            });
+        }
+    </script>
+</body>
+</html>

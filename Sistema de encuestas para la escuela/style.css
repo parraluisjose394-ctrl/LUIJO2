@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #000000, #0a0a0a, #1a1a1a);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* CONTENEDOR VIDRIO / GLASS */
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    width: 370px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.titulo {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* GLOW PSICÓPATA EN FOCUS */
+input:focus, select:focus {
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 0 12px #6f00ff;
+    transform: scale(1.02);
+}
+
+/* ----- SELECT CUSTOM SIN AZUL ----- */
+.select-container {
+    position: relative;
+    width: 100%;
+}
+
+.select-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 14px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Flechita custom */
+.select-container::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6f00ff;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Opciones siempre oscuras */
+select option {
+    background: #0f0f0f !important;
+    color: #ffffff !important;
+}
+
+/* BOTÓN PSICÓPATA CON PULSO */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #1e00ff, #6a00ff);
+    color: white;
+    transition: 0.25s;
+    animation: pulse 2.5s infinite ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #4d00ff;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0px rgba(111,0,255,0.2); }
+    50% { box-shadow: 0 0 20px rgba(111,0,255,0.5); }
+    100% { box-shadow: 0 0 0px rgba(111,0,255,0.2); }
+}
